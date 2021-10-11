@@ -73,11 +73,56 @@ means that the installation was successful.
 
 `git --help -all` If the option --all or -a is given then all the available commands are printed. 
 
-`git --help config` If a Git command is mentioned, this option will bring up the manual page for 
+`git --help config` If a Git command (`config` in this case) is mentioned, this option will bring up the manual page for 
 that command in your browser.
 
 ## Configuring Git
+Git uses a series of configuration files to determine non-default behavior that you may want. The 
+first place Git looks for these values is in the system-wide `[path]/etc/gitconfig` file, which 
+contains settings that are applied to every user on the system and all of their repositories. 
+If you pass the option `--system` to git config, it reads and writes from this file specifically.
 
+The next place Git looks is the `~/.gitconfig` (or `~/.config/git/config`) file, which is specific 
+to each user of the system. You can make Git read and write to this file by passing the `--global` 
+option.
+
+Finally, Git looks for configuration values in the configuration file in the Git directory 
+(`.git/config`) of whatever repository you’re currently using. These values are specific to that 
+single repository, and represent passing the `--local` option to git config. If you don’t specify which 
+level you want to work with, this is the default.
+
+Each of these “levels” (system, global and local) overwrites values in the previous level, so values 
+in `.git/config` (global config, which applies to a single user of the system) trump those in 
+`[path]/etc/gitconfig` (system config, which applies to all users of the system), for instance.
+
+### Configuration levels
+ - `git config --system` is used for specifying the git configuration for all the users of the system.
+ - `git config --global` is used for specifying the git configuration for a specific user of the system.
+ - `git config --local` or `git config` is used for specifying the git configuration for the current 
+   git project that you're using.
+   
+### Setting the config properties
+Below are a few example that show how a git property is set at any level.
+ - `git config --global user.name={username}` sets the `user.name` property on the global level 
+   (inside `.git/config` file).
+ - `git config --system user.email={useremail}` sets the `user.email` property on the system level 
+   (inside `[path]/etc/gitconfig` file).
+
+### Listing the config properties
+To see all the properties configured globally in Git, you can use the `–-list` option on the git config 
+command. Adding the `-–show-origin` option will also output the .gitconfig file’s location (based on 
+what level is selected - local, global or system).
+
+`git config --global --list --show-origin` lists all the properties present in the global gitconfig 
+file and also outputs the location of the global gitconfig file on your machine.
+   
+### Updating the config properties
+`git config --global --add core.gitproxy '"proxy-command" for example.com'` to add a new proxy, 
+without altering any of the existing ones.
+
+`git config --global --unset core.editor` to remove or unset a config property.
+
+`git config --global --edit` to edit the git config file via the default git editor.
 
 ## Concepts and terminology
 
@@ -118,3 +163,4 @@ This list contains some of the most widely used git commands, and is open for ac
 ## References
  - [https://git-scm.com/docs](https://git-scm.com/docs)
  - [https://www.atlassian.com/git/tutorials](https://www.atlassian.com/git/tutorials)
+ - [https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/The-global-Git-config-files-key-settings-and-usages](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/The-global-Git-config-files-key-settings-and-usages)
