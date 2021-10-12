@@ -220,11 +220,20 @@ The git add command adds a change in the working directory to the staging area. 
 you want to include updates to a particular file in the next commit. Changes are not actually recorded 
 until you run `git commit` after.
 
-`git add <file>` to add all changes of the mentioned file to the staging area.
+To add all changes of the mentioned file to the staging area:
+```
+$ git add <file>
+```
 
-`git add <directory>` to add all changes of the mentioned directory to the staging area.
+To add all changes of the mentioned directory to the staging area:
+```
+$ git add <directory>
+```
 
-`git add .` to add all the changes in all the files to the staging area
+To add all the changes in all the files to the staging area:
+```
+$ git add .
+```
 
 ### git apply
 ### git branch
@@ -255,8 +264,24 @@ until you run `git commit` after.
 ### git switch
 ### git tag
 
+## Miscellaneous
+### The `.gitignore` file
+Git sees every file in your working copy as one of three things:
+
+ - tracked - a file which has been previously staged or committed
+ - untracked - a file which has not been staged or committed or
+ - ignored - a file which Git has been explicitly told to ignore.
+
+If you don't want to commit some files/folders to Git, and want Git to completely ignore them, then 
+you can have a file called **.gitignore** created at the root of your repository and add file/folder 
+patterns to ignore. All the files/folders that match the patterns mentioned in the **.gitignore** 
+file are completely ignored by Git. Refer this link: 
+[https://linuxize.com/post/gitignore-ignoring-files-in-git](https://linuxize.com/post/gitignore-ignoring-files-in-git)
+to know more about patterns that can be used in the **.gitignore** file.
+
 ## References
  - [https://git-scm.com/docs](https://git-scm.com/docs)
  - [https://www.atlassian.com/git/tutorials](https://www.atlassian.com/git/tutorials)
  - [https://www.tutorialspoint.com/git/git_basic_concepts.htm](https://www.tutorialspoint.com/git/git_basic_concepts.htm)
+ - [https://linuxize.com/post/gitignore-ignoring-files-in-git](https://linuxize.com/post/gitignore-ignoring-files-in-git)
  - [https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/The-global-Git-config-files-key-settings-and-usages](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/The-global-Git-config-files-key-settings-and-usages)
