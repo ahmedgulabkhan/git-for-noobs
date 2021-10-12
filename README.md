@@ -1,6 +1,9 @@
 # Git for Noobs
 
-This documentation will help you get started with Git and also contains the most widely used git commands.
+![Git for Noobs](./assets/git.jpg)
+
+This documentation will help you get started with Git, it's terminology, and also contains the most 
+widely used git commands.
 
 This documentation is open for contribution and for updating any mistakes.
 
@@ -44,7 +47,7 @@ This documentation is open for contribution and for updating any mistakes.
 
 ## What is Git?
 Version control, also known as source control, is the practice of tracking and managing changes to 
-software code. Version control systems are software tools that help software teams manage changes to 
+software code. Version control systems (VSCs) are software tools that help software teams manage changes to 
 source code over time. As development environments have accelerated, version control systems help 
 software teams work faster and smarter.
 
@@ -110,7 +113,7 @@ Below are a few example that show how a git property is set at any level.
 
 ### Listing the config properties
 To see all the properties configured globally in Git, you can use the `–-list` option on the git config 
-command. Adding the `-–show-origin` option will also output the .gitconfig file’s location (based on 
+command. Adding the `-–show-origin` option will also output the gitconfig file’s location (based on 
 what level is selected - local, global or system).
 
 `git config --global --list --show-origin` lists all the properties present in the global gitconfig 
@@ -122,15 +125,107 @@ without altering any of the existing ones.
 
 `git config --global --unset core.editor` to remove or unset a config property.
 
+`git config --global --unset-all core.editor` to remove or unset all the properties of the property.
+
 `git config --global --edit` to edit the git config file via the default git editor.
 
 ## Concepts and terminology
+### Local Repository
+Every version control system tool provides a private workplace as a working copy. Developers make 
+changes in their private workplace and after commit, these changes become a part of the repository. 
+Git takes it one step further by providing them a private copy of the whole repository. Users can 
+perform many operations with this repository such as add file, remove file, rename file, move file, 
+commit changes, and many more.
 
+### Working Directory and Staging Area or Index
+The working directory is the place where files are checked out. Git does not track each and every 
+modified file. Whenever you do commit an operation, Git looks for the files present in the staging 
+area. Only those files present in the staging area are considered for commit and not all the 
+modified files.
+
+Let us see the basic workflow of Git.
+
+Step 1 − You modify a file from the working directory.
+
+Step 2 − You add these files to the staging area.
+
+Step 3 − You perform commit operation that moves the files from the staging area. After push operation, 
+it stores the changes permanently to the Git repository.
+
+![Basic workflow of Git](./assets/working-directory.png)
+
+### Blobs
+Blob stands for Binary Large Object. Each version of a file is represented by blob. A blob holds 
+the file data but does not contain any metadata about the file. It is a binary file, and in Git 
+database, it is named as SHA1 hash of that file. In Git, files are not addressed by names. 
+Everything is content-addressed.
+
+### Trees
+Tree is an object, which represents a directory. It holds blobs as well as other sub-directories. 
+A tree is a binary file that stores references to blobs and trees which are also named as SHA1 hash 
+of the tree object.
+
+### Commits
+Commit holds the current state of the repository. A commit is also named by SHA1 hash. You can consider 
+a commit object as a node of the linked list. Every commit object has a pointer to the parent commit 
+object. From a given commit, you can traverse back by looking at the parent pointer to view the 
+history of the commit. If a commit has multiple parent commits, then that particular commit has been 
+created by merging two branches.
+
+### Branches
+Branches are used to create another line of development. By default, Git has a master branch, which 
+is same as trunk in Subversion. Usually, a branch is created to work on a new feature. Once the 
+feature is completed, it is merged back with the master branch and we delete the branch. Every branch 
+is referenced by HEAD, which points to the latest commit in the branch. Whenever you make a commit, 
+HEAD is updated with the latest commit.
+
+### Tags
+Tag assigns a meaningful name with a specific version in the repository. Tags are very similar to 
+branches, but the difference is that tags are immutable. It means, tag is a branch, which nobody 
+intends to modify. Once a tag is created for a particular commit, even if you create a new commit, 
+it will not be updated. Usually, developers create tags for product releases.
+
+### Clone
+Clone operation creates the instance of the repository. Clone operation not only checks out the 
+working copy, but it also mirrors the complete repository. Users can perform many operations with 
+this local repository. The only time networking gets involved is when the repository instances are 
+being synchronized.
+
+### Pull
+Pull operation copies the changes from a remote repository instance to a local one. The pull operation 
+is used for synchronization between two repository instances. This is same as the update operation in 
+Subversion.
+
+### Push
+Push operation copies changes from a local repository instance to a remote one. This is used to store 
+the changes permanently into the Git repository. This is same as the commit operation in Subversion.
+
+### HEAD
+HEAD is a pointer, which always points to the latest commit in the branch. Whenever you make a commit, 
+HEAD is updated with the latest commit. The heads of the branches are stored in `.git/refs/heads/` 
+directory.
+
+### Revision
+Revision represents the version of the source code. Revisions in Git are represented by commits. 
+These commits are identified by SHA1 secure hashes.
+
+### URL
+URL represents the location of the Git repository. Git URL is stored in config file.
 
 ## Most widely used commands along with their use cases
 This list contains some of the most widely used git commands, and is open for accepting contributions
 
 ### git add
+The git add command adds a change in the working directory to the staging area. It tells Git that 
+you want to include updates to a particular file in the next commit. Changes are not actually recorded 
+until you run `git commit` after.
+
+`git add <file>` to add all changes of the mentioned file to the staging area.
+
+`git add <directory>` to add all changes of the mentioned directory to the staging area.
+
+`git add .` to add all the changes in all the files to the staging area
+
 ### git apply
 ### git branch
 ### git checkout
@@ -163,4 +258,5 @@ This list contains some of the most widely used git commands, and is open for ac
 ## References
  - [https://git-scm.com/docs](https://git-scm.com/docs)
  - [https://www.atlassian.com/git/tutorials](https://www.atlassian.com/git/tutorials)
+ - [https://www.tutorialspoint.com/git/git_basic_concepts.htm](https://www.tutorialspoint.com/git/git_basic_concepts.htm)
  - [https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/The-global-Git-config-files-key-settings-and-usages](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/The-global-Git-config-files-key-settings-and-usages)
