@@ -330,7 +330,7 @@ $ git push origin --delete <branch>
 ```
 or
 ```
-$ git push origin <branch>
+$ git push origin :<branch>
 ```
 
 ### git checkout
