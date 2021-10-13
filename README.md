@@ -280,7 +280,59 @@ $ git add .
 ```
 
 ### git apply
+The changes present in a patch file (e.g. the output of git diff) can be applied to the current branch 
+by using the git apply command. With the `--index` option the patch is also applied to the index, 
+and with the `--cached` option the patch is only applied to the index.
+```
+$ git apply <patch_file_name>
+```
+
+
 ### git branch
+In Git, branches are effectively a pointer to a snapshot of your changes. When you want to add a new 
+feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes.
+
+List all the branches in your local repository (`git branch --list` can also be used to generate the same 
+output):
+```
+$ git branch
+```
+
+Create a new branch locally. This does not check out the new branch:
+```
+$ git branch <branch>
+```
+
+Delete the specified local branch. This is a “safe” operation in that Git prevents you from deleting the 
+branch if it has unmerged changes:
+```
+$ git branch -d <branch>
+```
+
+Force delete the specified local branch, even if it has unmerged changes.
+```
+$ git branch -D <branch>
+```
+
+Rename the current local branch:
+```
+$ git branch -m <new_branch_name>
+```
+
+List all the branches of the current repository both local and remote:
+```
+$ git branch -a
+```
+
+Deleting a remote branch:
+```
+$ git push origin --delete <branch>
+```
+or
+```
+$ git push origin <branch>
+```
+
 ### git checkout
 ### git clone
 ### git commit
