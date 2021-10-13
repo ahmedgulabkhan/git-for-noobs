@@ -70,14 +70,26 @@ Open your terminal and type the command `git --version`, if you see the git vers
 means that the installation was successful.
 
 ### Some useful options
-`git --version` prints the Git version that is currently installed.
+To print the Git version that is currently installed:
+```
+$ git --version
+```
 
-`git --help` prints the synopsis, and a list of the most commonly used commands. 
+To print the synopsis, and a list of the most commonly used commands:
+```
+$ git --help
+```
 
-`git --help -all` If the option --all or -a is given then all the available commands are printed. 
+If the option `--all` or `-a` is given then all the available commands are printed:
+```
+$ git --help --all
+```
 
-`git --help config` If a Git command (`config` in this case) is mentioned, this option will bring up the manual page for 
-that command in your browser.
+If a Git command (`config` in this case) is mentioned along with `--help`, it brings up the manual 
+page for that command in your browser:
+```
+$ git --help config
+```
 
 ## Configuring Git
 Git uses a series of configuration files to determine non-default behavior that you may want. The 
@@ -99,35 +111,67 @@ in `.git/config` (global config, which applies to a single user of the system) t
 `[path]/etc/gitconfig` (system config, which applies to all users of the system), for instance.
 
 ### Configuration levels
- - `git config --system` is used for specifying the git configuration for all the users of the system.
- - `git config --global` is used for specifying the git configuration for a specific user of the system.
- - `git config --local` or `git config` is used for specifying the git configuration for the current 
-   git project that you're using.
+In order to specify the git configuration for all the users of the system, use:
+```
+$ git config --system
+```
+
+In order to specify the git configuration for a specific user of the system, use:
+```
+$ git config --global
+```
+
+In order to specify the git configuration for the current git project that you're using, use:
+```
+$ git config --local
+```
+
+If no level is specified along with the `git config` command, then the default level is local. 
+Therefore, using `git config --local` or `git config` would be the same.
    
 ### Setting the config properties
 Below are a few example that show how a git property is set at any level.
- - `git config --global user.name={username}` sets the `user.name` property on the global level 
-   (inside `.git/config` file).
- - `git config --system user.email={useremail}` sets the `user.email` property on the system level 
-   (inside `[path]/etc/gitconfig` file).
+To set the `user.name` property on the global level (inside `.git/config` file):
+```
+$ git config --global user.name={username}
+```
+
+To set the `user.email` property on the system level (inside `[path]/etc/gitconfig` file):
+```
+$ git config --system user.email={useremail}
+```
 
 ### Listing the config properties
 To see all the properties configured globally in Git, you can use the `–-list` option on the git config 
 command. Adding the `-–show-origin` option will also output the gitconfig file’s location (based on 
 what level is selected - local, global or system).
 
-`git config --global --list --show-origin` lists all the properties present in the global gitconfig 
-file and also outputs the location of the global gitconfig file on your machine.
+List all the properties present in the global gitconfig file and also output the location of the 
+global gitconfig file on your machine:
+```
+$ git config --global --list --show-origin
+```
    
 ### Updating the config properties
-`git config --global --add core.gitproxy '"proxy-command" for example.com'` to add a new proxy, 
-without altering any of the existing ones.
+To add a new proxy, without altering any of the existing ones:
+```
+$ git config --global --add core.gitproxy '"proxy-command" for example.com'
+```
 
-`git config --global --unset core.editor` to remove or unset a config property.
+To remove or unset a config property:
+```
+$ git config --global --unset core.editor
+```
 
-`git config --global --unset-all core.editor` to remove or unset all the properties of the property.
+To remove or unset all the values of a property:
+```
+$ git config --global --unset-all core.editor
+```
 
-`git config --global --edit` to edit the git config file via the default git editor.
+To edit the git config file via the default git editor:
+```
+$ git config --global --edit
+```
 
 ## Concepts and terminology
 ### Local Repository
