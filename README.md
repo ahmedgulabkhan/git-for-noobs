@@ -515,7 +515,7 @@ $ git fetch <repository-url>
 
 To fetch a specific branch:
 ```
-$ git fetch <branch-url><branch>
+$ git fetch <branch-url> <branch>
 ```
 
 To fetch all the branches simultaneously:
