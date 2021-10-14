@@ -284,7 +284,7 @@ The changes present in a patch file (e.g. the output of git diff) can be applied
 by using the git apply command. With the `--index` option the patch is also applied to the index, 
 and with the `--cached` option the patch is only applied to the index.
 ```
-$ git apply <patch_file_name>
+$ git apply <patc-file>
 ```
 
 
@@ -316,7 +316,7 @@ $ git branch -D <branch>
 
 Rename the current local branch:
 ```
-$ git branch -m <new_branch_name>
+$ git branch -m <new-branch>
 ```
 
 List all the branches of the current repository both local and remote:
@@ -334,8 +334,97 @@ $ git push origin :<branch>
 ```
 
 ### git checkout
+The git checkout command operates upon three distinct entities: files, commits, and branches.
+
+**Checking out branches:**
+
+The git checkout command lets you navigate between the branches created by git branch. Checking out a 
+branch updates the files in the working directory to match the version stored in that branch, and it 
+tells Git to record all new commits on that branch.
+
+Switch to an existing local branch:
+```
+$ git checkout <branch>
+```
+
+Create a new local branch and switch to it:
+```
+$ $ git checkout -b <new-branch> (The <new-branch> is based off of the current HEAD)
+```
+
+By default git checkout -b will base the new-branch off the current HEAD. If an optional additional 
+parameter is passed, then the new-branch is based off of branch specified instead of the current HEAD.
+```
+$ git checkout -b ＜new-branch＞ ＜existing-branch＞ (The <new-branch> is based off of <existing-branch>)
+```
+
+Checking out to a remote branch (In order to checkout a remote branch you have to first fetch the contents of the branch):
+```
+$ git fetch --all
+$ git checkout ＜remote-branch＞
+```
+
+**Checking out commits:**
+
+To checkout a specific commit, you can use the git checkout command and provide the commit hash 
+as a parameter:
+```
+$ git checkout <commit-hash> (e.g. git checkout 123abc123)
+```
+
+**Checking out files:**
+
+The git checkout command when used along with a file discards all the file changes in the working 
+directory:
+```
+$ git checkout <file-name>
+$ git checkout . (discards all the changes in all the modified files in the working directory)
+```
+
 ### git clone
+git clone is a Git command line utility which is used to target an existing repository and create a 
+clone, or copy of the target repository.
+```
+$ git clone <repo>
+```
+
+Cloning to a specific folder:
+```
+$ git clone <repo> <directory>
+```
+
+Cloning a specific tag:
+```
+$ git clone --branch <tag> <repo>
+```
+
+Cloning a specific branch:
+```
+$ git clone -b <branch> <repo>
+```
+
 ### git commit
+The git commit command captures a snapshot of the project's currently staged changes. Committed 
+snapshots can be thought of as “safe” versions of a project—Git will never change them unless you 
+explicitly ask it to. Prior to the execution of git commit, The git add command is used to promote or 
+'stage' changes to the project that will be stored in a commit.
+
+Commit the staged snapshot. This will launch a text editor prompting you for a commit message. 
+After you’ve entered a message, save the file and close the editor to create the actual commit.
+```
+$ git commit
+```
+
+Commit with an inline message:
+```
+$ git commit -m "Initial commit"
+```
+
+Instead of creating a new commit, add/append staged changes to the previous commit:
+```
+$ git commit --amend
+```
+
 ### git config
 ### git describe
 ### git diff
@@ -378,6 +467,6 @@ to know more about patterns that can be used in the **.gitignore** file.
 ## References
  - [https://git-scm.com/docs](https://git-scm.com/docs)
  - [https://www.atlassian.com/git/tutorials](https://www.atlassian.com/git/tutorials)
- - [https://www.tutorialspoint.com/git/git_basic_concepts.htm](https://www.tutorialspoint.com/git/git_basic_concepts.htm)
+ - [https://www.tutorialspoint.com/git](https://www.tutorialspoint.com/git/git_basic_concepts.htm)
  - [https://linuxize.com/post/gitignore-ignoring-files-in-git](https://linuxize.com/post/gitignore-ignoring-files-in-git)
  - [https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/The-global-Git-config-files-key-settings-and-usages](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/The-global-Git-config-files-key-settings-and-usages)
