@@ -280,17 +280,17 @@ $ git add .
 ```
 
 ### git apply
-The changes present in a patch file (e.g. the output of git diff) can be applied to the current branch 
+The changes present in a patch file (e.g. the output of git diff) can be applied to the working directory 
 by using the git apply command. With the `--index` option the patch is also applied to the index, 
 and with the `--cached` option the patch is only applied to the index.
 ```
-$ git apply <patc-file>
+$ git apply <patch-file>
 ```
 
 
 ### git branch
 In Git, branches are effectively a pointer to a snapshot of your changes. When you want to add a new 
-feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes.
+feature or fix a bug no matter how big or how small you spawn a new branch to encapsulate your changes.
 
 List all the branches in your local repository (`git branch --list` can also be used to generate the same 
 output):
