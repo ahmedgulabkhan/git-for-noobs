@@ -426,9 +426,108 @@ $ git commit --amend
 ```
 
 ### git config
+This command is used to display or set the config properties of git at various levels (system, global and local):
+
+List all the config properties:
+```
+$ git config --global --list (lists all the global git config properties)
+```
+
+Display the value of a property:
+```
+$ git config --local user.name
+```
+
+Set the value of a property:
+```
+$ git config --system color.ui false
+```
+
+Add a value to an existing property without changing the previous values:
+```
+$ git config --global --add core.gitproxy '"proxy-command" for example.com'
+```
+
+To remove or unset a config property:
+```
+$ git config --global --unset core.editor
+```
+
+To remove or unset all the values of a property:
+```
+$ git config --global --unset-all core.editor
+```
+
+To edit the git config file via the default git editor:
+```
+$ git config --system --edit
+```
+
 ### git describe
+The command finds the most recent tag that is reachable from a commit. If the tag points to the commit, 
+then only the tag is shown. Otherwise, it suffixes the tag name with the number of additional commits 
+on top of the tagged object and the abbreviated object name of the most recent commit.
+
+Describing a branch:
+```
+$ git describe <branch>
+```
+The above outputs the tag that the branch is based on along with the number of commits on top and an 
+abbreviated object name for the commit at the end.
+
+Describing a tag:
+```
+$ git describe <tag>
+```
+
 ### git diff
+git diff is a multi-use Git command that when executed runs a diff function on Git data sources. 
+These data sources can be commits, branches, files and more.
+
+Changes since last commit:
+```
+$ git diff
+```
+
+Comparing files between two different commits:
+```
+$ git diff <commit-hash-1> <commit-has-2>
+```
+
+Comparing two branches:
+```
+$ git diff <branch-1> <branch-2>
+```
+
+Comparing files from two branches:
+```
+$ git diff<branch-1> <branch-2> <file-path>
+```
+
 ### git fetch
+The git fetch command is used to pull the updates from remote-tracking branches. Additionally, we 
+can get the updates that have been pushed to our remote branches to our local machines.
+
+To fetch the remote repository:
+```
+$ git fetch <repository-url>
+```
+
+To fetch a specific branch:
+```
+$ git fetch <branch-url><branch>
+```
+
+To fetch all the branches simultaneously:
+```
+$ git fetch --all
+```
+
+To synchronize the local repository:
+```
+$ git fetch origin
+```
+
 ### git init
 ### git log
 ### git merge
