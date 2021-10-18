@@ -529,7 +529,111 @@ $ git fetch origin
 ```
 
 ### git init
+The git init command creates a new Git repository. It can be used to convert an existing, unversioned 
+project to a Git repository or initialize a new, empty repository. Executing git init creates a .git 
+subdirectory in the current working directory, which contains all of the necessary Git metadata for 
+the new repository. This metadata includes subdirectories for objects, refs, and template files. A HEAD 
+file is also created which points to the currently checked out commit.
+
+To transform the current directory into a Git repository:
+```
+$ git init
+```
+
+Create an empty Git repository in the specified directory. Running this command will create a new 
+subdirectory containing nothing but the .git subdirectory:
+```
+$ git init <directory>
+```
+
+Initialize an empty Git repository, but omit the working directory. Shared repositories should always 
+be created with the --bare flag (see discussion below). Conventionally, repositories initialized with 
+the --bare flag end in .git:
+```
+$ git init --bare <directory>
+```
+
+Initialize a new Git repository and copy all the .git files from the **template-directory** into the new 
+repository:
+```
+$ git init <directory> --template=<template-directory>
+```
+
+Using the `--quiet` option, we can only print "critical level" messages, errors, and warnings. All other 
+output is silenced:
+```
+$ git init --quiet
+```
+
 ### git log
+Git log is a utility tool to review and read a history of everything that happens to a repository.
+
+The basic git log command will display the most recent commits and the status of the head:
+```
+$ git log
+```
+
+The `--oneline` option is used to display the output as one commit per line. It also shows the output 
+in brief like the first seven characters of the commit SHA and the commit message:
+```
+$ git log --oneline
+```
+
+The `--stat` option displays the files that have been modified. It also shows the number of lines and a 
+summary line of the total records that have been updated:
+```
+$ git log --stat
+```
+
+The `--patch` or `-p` option displays the files that have been modified. It also shows the location 
+of the added, removed, and updated lines:
+```
+$ git log --patch
+```
+or
+```
+$ git log -p
+```
+
+Showing the git log as a graph using `--graph` option:
+```
+$ git log --graph
+```
+
+**Git log command to filter out commit history**
+By amount:
+```
+$ git log -n (will print the log of "n" recent commits)
+```
+
+By date and time:
+```
+$ git log --after="yyyy-mm-dd"
+```
+or
+```
+$ git log --after="21 days ago"
+```
+or
+```
+$ git log --after="yyyy-mm-dd" --before="yyyy-mm-dd"
+```
+
+By Author:
+```
+$ git log --author=<author-name>
+```
+
+By commit message:
+```
+$ git log --grep=<commit-message>
+```
+
+By file:
+```
+$ git log -- <file-1> <file-2> (displays the commit logs of the files file-1 and file-2)
+```
+
 ### git merge
 ### git mv
 ### git notes
@@ -562,6 +666,9 @@ patterns to ignore. All the files/folders that match the patterns mentioned in t
 file are completely ignored by Git. Refer this link: 
 [https://linuxize.com/post/gitignore-ignoring-files-in-git](https://linuxize.com/post/gitignore-ignoring-files-in-git)
 to know more about patterns that can be used in the **.gitignore** file.
+
+### `git fetch` vs `git pull`
+
 
 ## References
  - [https://git-scm.com/docs](https://git-scm.com/docs)
