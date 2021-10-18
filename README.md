@@ -635,8 +635,89 @@ $ git log -- <file-1> <file-2> (displays the commit logs of the files file-1 and
 ```
 
 ### git merge
+The git merge command lets you take the independent lines of development created by git branch and 
+integrate them into a single branch.
+
+Note that all of the commands presented below merge into the current branch. The current branch will be 
+updated to reflect the merge, but the target branch will be completely unaffected. Make sure that both 
+the branches are up to date with the remote repository before doing a merge. If there are conflicts 
+in the merge operation, then it results in a merge conflict.
+
+To merge the specified commit to currently active branch:
+```
+$ git merge <commit>
+```
+
+To merge the speciified branch into the currently active branch:
+```
+$ git merge <branch-name> (<branch-name> is the branch whose changes are merged into the current branch)
+```
+
 ### git mv
+This command is used to move or rename a file or directory. The file or directory that has to be moved 
+or renamed has to be present in the staging area.
+
+To rename a file or directory:
+```
+$ git mv <file-1> <file-2> (to rename a file)
+```
+or
+```
+$ git mv <directory-1> <directory-2> (to rename a directory)
+```
+
+To move a file or directory:
+```
+$ git mv <source-file> <destination-file> (to move a file)
+```
+or
+```
+$ git mv <source-directory> <destination-directory> (to move a directory)
+```
+
 ### git notes
+This command adds, removes, or reads notes attached to objects, without touching the objects themselves.
+By default, notes are saved to and read from `refs/notes/commits`, but this default can be overridden.
+
+List notes of any object:
+```
+$ git notes list (lists notes of all the objects)
+$ git notes list <object> ((lists notes of the object specified)
+```
+
+Add notes to an object:
+```
+$ git notes add -m "note contents" <object> (if object is not specified the default is taken as HEAD)
+```
+Note: If there is an already existing notes for an object, then the add command gives an error. If the 
+`--force` or `-f` option is used along with the add command, it overrides the existing notes and creates a 
+new one.
+
+Append to the notes of an existing object (defaults to HEAD). Creates a new notes object if needed:
+```
+$ git notes append -m "note contents" <object> (if object is not specified the default is taken as HEAD)
+```
+
+Show notes of an object:
+```
+$ git notes show <object> (if object is not specified the default is taken as HEAD)
+```
+
+Edit notes of an object:
+```
+$ git notes edit <object> (if object is not specified the default is taken as HEAD)
+```
+
+Remove the notes for given object:
+```
+$ git notes remove <object> (if object is not specified the default is taken as HEAD)
+```
+
+Remove all the notes of all the objects:
+```
+$ git notes prune
+```
+
 ### git pull
 ### git push
 ### git rebase
