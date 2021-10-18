@@ -668,11 +668,23 @@ file are completely ignored by Git. Refer this link:
 to know more about patterns that can be used in the **.gitignore** file.
 
 ### `git fetch` vs `git pull`
+`git fetch` really only downloads new data from a remote repository - but it doesn't integrate any of this 
+new data into your working files. Fetch is great for getting a fresh view on all the things that happened 
+in a remote repository. Due to it's "harmless" nature, fetch will never manipulate, destroy, or 
+screw up anything.
 
+`git pull` in contrast, is used with a different goal in mind: to update your current HEAD branch with 
+the latest changes from the remote server. This means that pull not only downloads new data, it also 
+directly integrates it into your current working copy files. This has a couple of consequences:
+ - Since `git pull` tries to merge remote changes with your local ones, a so-called "merge conflict" 
+  can occur.
+ - Like for many other actions, it's highly recommended to start a "git pull" only with a clean 
+   working copy. This means that you should not have any uncommitted local changes before you pull.
 
 ## References
  - [https://git-scm.com/docs](https://git-scm.com/docs)
  - [https://www.atlassian.com/git/tutorials](https://www.atlassian.com/git/tutorials)
  - [https://www.tutorialspoint.com/git](https://www.tutorialspoint.com/git/git_basic_concepts.htm)
  - [https://linuxize.com/post/gitignore-ignoring-files-in-git](https://linuxize.com/post/gitignore-ignoring-files-in-git)
+ - [https://www.git-tower.com/learn/git/faq](https://www.git-tower.com/learn/git/faq)
  - [https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/The-global-Git-config-files-key-settings-and-usages](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/The-global-Git-config-files-key-settings-and-usages)
