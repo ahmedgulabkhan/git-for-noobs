@@ -349,7 +349,7 @@ $ git checkout <branch>
 
 Create a new local branch and switch to it:
 ```
-$ $ git checkout -b <new-branch> (The <new-branch> is based off of the current HEAD)
+$ git checkout -b <new-branch> (The <new-branch> is based off of the current HEAD)
 ```
 
 By default git checkout -b will base the new-branch off the current HEAD. If an optional additional 
@@ -719,10 +719,84 @@ $ git notes prune
 ```
 
 ### git pull
+The `git pull` command is used to fetch and download content from a remote repository and immediately update 
+the local repository to match that content. The git pull command first runs git fetch which downloads content 
+from the specified remote repository. Then a git merge is executed to merge the remote content refs and heads 
+into a new local merge commit.
+
+Pull changes from a remote branch (Fetch the specified remote’s copy of the current branch and immediately 
+merge it into the local copy):
+```
+$ git pull <remote>
+```
+
+Fetch the remote content but does not create a new merge commit:
+```
+$ git pull --no-commit <remote>
+```
+
+Pulling with rebase instead of merge:
+```
+$ git pull --rebase <remote>
+```
+
+Output the content being downloaded and the merge details during the pull:
+```
+$ git pull --verbose
+```
+
 ### git push
+The git push command is used to upload local repository content to a remote repository.
+
+Push changes to the specified remote and branch:
+```
+$ git push <remote> <branch>
+```
+
+Push all of your local branches to the specified remote:
+```
+$ git push <remote> --all
+```
+
+Tags are not automatically pushed using the push command, in order to push local tags:
+```
+$ git push <remote> --tags
+```
+
 ### git rebase
+Rebasing is the process of moving or combining a sequence of commits to a new base commit.
+
+Rebase the current branch onto the specified base, which can be any kind of commit reference(for example an ID, 
+a branch name, a tag, or a relative reference to HEAD):
+```
+$ git rebase <base>
+```
+
 ### git remote
+The `git remote` command manages the set of remotes that you are tracking with your local repository.
+
+List the current remotes associated with the local repository:
+```
+$ git remote -v
+```
+
+Adding a remote:
+```
+$ git remote add <name> <url>
+```
+
+Removing a remote:
+```
+$ git remote remove <name>
+```
+
 ### git replace
+The replace command lets you specify an object in Git and say "every time you refer to this object, pretend it’s 
+a different object".
+```
+$ git replace <object> <replacement>
+```
+
 ### git reset
 ### git restore
 ### git revert
@@ -765,6 +839,7 @@ directly integrates it into your current working copy files. This has a couple o
 ## References
  - [https://git-scm.com/docs](https://git-scm.com/docs)
  - [https://www.atlassian.com/git/tutorials](https://www.atlassian.com/git/tutorials)
+ - [https://github.com/git-guides](https://github.com/git-guides)
  - [https://www.tutorialspoint.com/git](https://www.tutorialspoint.com/git/git_basic_concepts.htm)
  - [https://linuxize.com/post/gitignore-ignoring-files-in-git](https://linuxize.com/post/gitignore-ignoring-files-in-git)
  - [https://www.git-tower.com/learn/git/faq](https://www.git-tower.com/learn/git/faq)
