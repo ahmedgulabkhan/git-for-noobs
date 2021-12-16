@@ -42,6 +42,7 @@ This documentation is open for contribution and for updating any mistakes.
   - [git status](#git-status)
   - [git switch](#git-switch)
   - [git tag](#git-tag)
+- [Miscellaneous](#miscellaneous)
 - [References](#references)
 
 
